@@ -55,6 +55,12 @@
             <button class="toggle" data-mode="passage">Passage</button>
           </div>
         </div>
+        <div class="selector-group">
+          <label>Ghost Mode:</label>
+          <div class="toggle-group" id="ghost-selector">
+            <button class="toggle" id="ghost-toggle">Off</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -99,6 +105,11 @@
                 <span class="correct" id="final-correct">0</span> / <span class="incorrect" id="final-incorrect">0</span>
               </div>
             </div>
+          </div>
+
+          <!-- Performance Graph -->
+          <div class="graph-container">
+            <canvas id="wpm-graph"></canvas>
           </div>
 
           <button id="go-again-btn" class="secondary-btn">

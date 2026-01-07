@@ -323,6 +323,16 @@ nav {
   border-radius: 2px;
 }
 
+.passage-display span.ghost {
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+}
+
+.passage-display span.ghost-head {
+    border-bottom: 2px dashed rgba(59, 130, 246, 0.5);
+}
+
 /* Overlays */
 .overlay {
   position: absolute;
@@ -408,7 +418,22 @@ nav {
 }
 
 .result-card h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-.result-card p { color: var(--Neutral400); margin-bottom: 2.5rem; }
+.result-card p { color: var(--Neutral400); margin-bottom: 2rem; }
+
+.graph-container {
+    width: 100%;
+    height: 150px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 16px;
+    margin-bottom: 2.5rem;
+    padding: 1rem;
+    border: 1px solid var(--Neutral700);
+}
+
+#wpm-graph {
+    width: 100%;
+    height: 100%;
+}
 
 .result-stats-grid {
   display: grid;
