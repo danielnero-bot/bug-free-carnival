@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Typing Speed Test</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="./assets/images/logo-large.svg" alt="logo">
+      </div>
+      <div class="personal-best">
+        <img src="./assets/images/icon-personal-best.svg" alt="PB">
+        <p>Personal best: <span id="pb-value">0</span> WPM</p>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- Top Bar: Stats & Controls -->
+    <div class="test-controls">
+      <div class="real-time-stats">
+        <div class="stat">WPM: <span id="current-wpm">0</span></div>
+        <div class="divider">|</div>
+        <div class="stat">Accuracy: <span id="current-accuracy">100%</span></div>
+        <div class="divider">|</div>
+        <div class="stat">Time: <span id="current-time">0:60</span></div>
+      </div>
+
+      <div class="selectors">
+        <div class="selector-group">
+          <label>Difficulty:</label>
+          <div class="toggle-group" id="difficulty-selector">
+            <button class="toggle active" data-difficulty="easy">Easy</button>
+            <button class="toggle" data-difficulty="medium">Medium</button>
+            <button class="toggle" data-difficulty="hard">Hard</button>
+          </div>
+        </div>
+        <div class="selector-group">
+          <label>Mode:</label>
+          <div class="toggle-group" id="mode-selector">
+            <button class="toggle active" data-mode="timed">Timed (60s)</button>
+            <button class="toggle" data-mode="passage">Passage</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Passage Area -->
+    <div class="typing-area">
+      <div id="passage-display" class="passage-display blurred">
+        <!-- Text spans will be injected here -->
+      </div>
+      
+      <!-- Start Overlay -->
+      <div id="start-overlay" class="overlay">
+        <button id="start-btn" class="primary-btn">Start Typing Test</button>
+        <p>Or click the text and start typing</p>
+      </div>
+
+      <!-- Results Overlay -->
+      <div id="result-overlay" class="overlay hidden">
+        <div class="result-card">
+          <div class="result-header">
+             <div class="check-icon">
+                <img src="./assets/images/icon-completed.svg" alt="Done">
+             </div>
+             <h1>Test Complete!</h1>
+             <p>Solid run. Keep pushing to beat your high score.</p>
+          </div>
+          
+          <div class="result-stats-grid">
+            <div class="res-box">
+              <span class="res-label">WPM:</span>
+              <span class="res-value" id="final-wpm">0</span>
+              <div id="new-pb-badge" class="badge">
+                 <img src="./assets/images/icon-new-pb.svg" alt="PB">
+              </div>
+            </div>
+            <div class="res-box">
+              <span class="res-label">Accuracy:</span>
+              <span class="res-value" id="final-accuracy">0%</span>
+            </div>
+            <div class="res-box">
+              <span class="res-label">Characters:</span>
+              <div class="chars-split">
+                <span class="correct" id="final-correct">0</span> / <span class="incorrect" id="final-incorrect">0</span>
+              </div>
+            </div>
+          </div>
+
+          <button id="go-again-btn" class="secondary-btn">
+             Go Again
+             <img src="./assets/images/icon-restart.svg" alt="restart">
+          </button>
+        </div>
+      </div>
+
+      <textarea id="typing-input" class="visually-hidden" autofocus></textarea>
+    </div>
+
+    <div class="footer-actions">
+       <button id="restart-btn-test" class="restart-link hidden">
+          Restart Test
+          <img src="./assets/images/icon-restart.svg" alt="restart">
+       </button>
+    </div>
+  </main>
+
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Antigravity AI</a>.
+  </footer>
+
+  <script src="./script.js"></script>
+</body>
+</html>
