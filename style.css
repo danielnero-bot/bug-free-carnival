@@ -28,6 +28,12 @@ body {
   flex-direction: column;
 }
 
+@media (max-width: 600px) {
+  body {
+    padding: 1.5rem;
+  }
+}
+
 header {
   max-width: 1100px;
   margin: 0 auto 3rem;
@@ -52,6 +58,13 @@ nav {
   color: var(--Neutral400);
   font-weight: 500;
   font-size: 0.9rem;
+}
+
+.personal-best .mobile-label { display: none; }
+
+@media (max-width: 600px) {
+  .personal-best .desktop-label { display: none; }
+  .personal-best .mobile-label { display: inline; }
 }
 
 .personal-best span {
@@ -82,6 +95,30 @@ nav {
   gap: 1.5rem;
   font-size: 1.1rem;
   font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .real-time-stats {
+    width: 100%;
+    justify-content: space-between;
+    gap: 0;
+  }
+  .real-time-stats .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    font-size: 0.8rem;
+    gap: 0.5rem;
+  }
+  .real-time-stats span {
+    font-size: 1.25rem;
+  }
+  .real-time-stats .divider {
+    height: 30px;
+    width: 1px;
+    background: var(--Neutral800);
+  }
 }
 
 .real-time-stats .stat {
@@ -141,6 +178,98 @@ nav {
   border: 1px solid var(--Blue400);
 }
 
+@media (max-width: 600px) {
+  .selectors {
+    width: 100%;
+    gap: 1rem;
+  }
+  .selector-group {
+    flex: 1;
+  }
+  .selector-group label {
+    display: none;
+  }
+  .toggle-group {
+    width: 100%;
+    position: relative;
+  }
+  /* On mobile, we transform the toggle group into a dropdown-like look */
+  /* But since we want to match the design, we'll hide inactive ones and show a chevron */
+  .toggle {
+    display: none;
+    width: 100%;
+    text-align: left;
+    padding: 0.8rem 1rem;
+    padding-right: 2.5rem;
+    position: relative;
+    border: none;
+    border-radius: 0;
+  }
+  
+  .toggle::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid var(--Neutral700);
+      border-radius: 50%;
+      margin-right: 12px;
+      vertical-align: middle;
+  }
+  
+  .toggle.active::before {
+      border-color: var(--Blue400);
+      background: radial-gradient(var(--Blue400) 40%, transparent 50%);
+  }
+
+  .toggle.active {
+    display: block;
+    background: var(--Neutral800);
+    border-color: var(--Neutral700);
+    position: relative;
+    border: 1px solid var(--Neutral700);
+    border-radius: 12px;
+  }
+  .toggle.active::after {
+    content: '';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background-image: url('./assets/images/icon-down-arrow.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  /* Dropdown open state logic */
+  .toggle-group.open {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
+    flex-direction: column;
+    background: var(--Neutral800);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    border: 1px solid var(--Neutral700);
+    border-radius: 12px;
+    padding: 0;
+  }
+  
+  .toggle-group.open .toggle {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--Neutral700);
+  }
+  
+  .toggle-group.open .toggle.active::after { display: none; }
+  
+  .toggle-group.open .toggle:first-child { border-radius: 12px 12px 0 0; }
+  .toggle-group.open .toggle:last-child { border-radius: 0 0 12px 12px; border-bottom: none; }
+}
+
 /* Typing Area */
 .typing-area {
   position: relative;
@@ -156,6 +285,16 @@ nav {
   color: var(--Neutral500);
   transition: filter 0.3s ease;
   min-height: 300px;
+}
+
+@media (max-width: 600px) {
+  .passage-display {
+    font-size: 1.4rem;
+    line-height: 1.4;
+  }
+  .typing-area {
+    min-height: 300px;
+  }
 }
 
 .passage-display.blurred {
@@ -256,12 +395,16 @@ nav {
 .check-icon {
   width: 64px;
   height: 64px;
-  background: rgba(140, 63, 57, 0.1); /* fallback */
+  background: hsla(140, 63%, 57%, 0.1);
   margin: 0 auto 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+}
+
+.check-icon img {
+    filter: brightness(0) saturate(100%) invert(68%) sepia(59%) saturate(415%) hue-rotate(94deg) brightness(92%) contrast(83%);
 }
 
 .result-card h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
@@ -272,6 +415,25 @@ nav {
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   margin-bottom: 2.5rem;
+}
+
+@media (max-width: 600px) {
+  .result-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .res-box {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+  }
+  .chars-split {
+      font-size: 1.5rem;
+  }
+  .res-value {
+      font-size: 1.5rem;
+  }
 }
 
 .res-box {

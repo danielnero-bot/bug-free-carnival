@@ -94,6 +94,31 @@ class TypingTest {
         // Restart Test
         this.elements.restartBtn.addEventListener('click', () => this.activateTest());
 
+        // Mobile dropdown toggles
+        [this.elements.difficultySelector, this.elements.modeSelector].forEach(selector => {
+            selector.addEventListener('click', (e) => {
+                if (window.innerWidth <= 600) {
+                    if (e.target.classList.contains('active')) {
+                        selector.classList.toggle('open');
+                    } else if (e.target.classList.contains('toggle')) {
+                        selector.classList.remove('open');
+                    }
+                }
+            });
+        });
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 600) {
+                if (!this.elements.difficultySelector.contains(e.target)) {
+                    this.elements.difficultySelector.classList.remove('open');
+                }
+                if (!this.elements.modeSelector.contains(e.target)) {
+                    this.elements.modeSelector.classList.remove('open');
+                }
+            }
+        });
+
         // Typing logic
         this.elements.typingInput.addEventListener('input', (e) => this.handleTyping(e));
         
